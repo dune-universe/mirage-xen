@@ -8,7 +8,7 @@ doc:          "https://mirage.github.io/mirage-xen/"
 license:      "ISC"
 tags:         ["org:mirage"]
 
-build: [ 
+build: [
   [ "env" "OPAM_PKG_CONFIG_PATH=%{prefix}%/lib/pkgconfig" "dune" "subst" ] {pinned}
   [ "env" "OPAM_PKG_CONFIG_PATH=%{prefix}%/lib/pkgconfig" "dune" "build" "-p" name "-j" jobs ]
 ]
@@ -23,7 +23,8 @@ depends: [
   "conf-pkg-config"
   "lwt-dllist"
   "mirage-profile" {>= "0.3"}
-  "mirage-xen-ocaml" {>= "2.6.0"}
+  "mirage-xen-ocaml" {>= "3.3.0"}
+  "mirage-xen-posix" {>= "3.3.0"}
   "io-page-xen" {>= "2.0.0"}
   "mirage-xen-minios" {>= "0.7.0"}
   "logs"
