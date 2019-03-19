@@ -1,17 +1,12 @@
+
 (library
  (name oS)
  (public_name mirage-xen)
  (wrapped true)
- (c_names       ("atomic_stubs" barrier_stubs clock_stubs cstruct_stubs
-                eventchn_stubs exit_stubs gnttab_stubs main mm_stubs
-                sched_stubs start_info_stubs xb_stubs))
- (c_flags         (:include cflags) (:include minios-cflags) -Wno-attributes -O2 -fPIC )
- (libraries lwt cstruct xen-evtchn xen-gnt xenstore.client shared-memory-ring-lwt mirage-profile logs io-page-xen))
-
-(rule (copy %{lib:mirage-xen-ocaml:cflags} cflags))
-(rule (copy %{lib:mirage-xen-posix:minios-cflags} minios-cflags))
-
-(copy_files ../bindings/*)
+ (libraries
+    lwt cstruct xen-evtchn xen-gnt xenstore.client
+    shared-memory-ring-lwt mirage-profile logs io-page-xen
+    mirage-xen.bindings))
 
 (install
   (section lib)

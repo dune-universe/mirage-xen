@@ -1,0 +1,22 @@
+(library
+ (name mirage_xen_bindings)
+ (public_name mirage-xen.bindings)
+ (libraries mirage-xen.bindings_minios)
+ (modules)
+ (c_names       ("atomic_stubs" clock_stubs cstruct_stubs mm_stubs))
+ (c_flags       -Wno-attributes -O2 -fPIC (:include cflags))
+)
+
+(library
+ (name mirage_xen_bindings_minios)
+ (public_name mirage-xen.bindings_minios)
+ (modules)
+ (c_names       ("eventchn_stubs" exit_stubs gnttab_stubs main
+                sched_stubs start_info_stubs xb_stubs))
+ (c_flags        -Wno-attributes -O2 -fPIC (:include minios-cflags))
+)
+
+
+(rule (copy %{lib:mirage-xen-ocaml:cflags} cflags))
+(rule (copy %{lib:mirage-xen-posix:minios-cflags} minios-cflags))
+
