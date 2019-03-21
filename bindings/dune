@@ -2,6 +2,7 @@
  (name mirage_xen_bindings)
  (public_name mirage-xen.bindings)
  (libraries mirage-xen.bindings_minios)
+ (no_dynlink)
  (modules)
  (c_names       ("atomic_stubs" clock_stubs cstruct_stubs mm_stubs))
  (c_flags       -Wno-attributes -O2 -fPIC (:include cflags))
@@ -11,6 +12,7 @@
  (name mirage_xen_bindings_minios)
  (public_name mirage-xen.bindings_minios)
  (modules)
+ (no_dynlink)
  (c_names       ("eventchn_stubs" exit_stubs gnttab_stubs main
                 sched_stubs start_info_stubs xb_stubs))
  (c_flags        -Wno-attributes -O2 -fPIC (:include minios-cflags))
